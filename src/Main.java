@@ -3,9 +3,6 @@ import java.util.Scanner;
 public class Main {
 	// field variables
 	// private static HashTable hashTable = new HashTable();
-	private static int defaultSize = 10;
-	private static int currentNumOfPersons;
-	private static int currentNumOfGifts;
 
 	public static void main(String[] args) {
 		Menu();
@@ -43,47 +40,56 @@ public class Main {
 	 * for modifying the HashTable that is chosen by the user. MenuChoices method
 	 * also handles miss inputs of the user and loops if it detects one.
 	 */
+	private static BGraph bGraph = new BGraph();
+	private static int defaultLoopCount = 10;
+
 	public static void Menu() {
 		System.out.print(PrintMenuChoices());
 
 		switch (CheckUserInput(PrintMenuChoices())) {
 		case 1: {// Add Persons
+			for (int i = 0; i < defaultLoopCount; i++) {
+				System.out.print("\n:: Enter a person name. \nUserInput%> ");
+				Person inputPerson = new Person(checkUserInput("\n:: Enter the string to search. \nUserInput%> "));
+				bGraph.addPerson(inputPerson);
+			} // end for
 
-			if (currentNumOfPersons > defaultSize) {
-				// if puno na or if 10 na yung persons
-				System.out.println("Already at max persons(10/10)");
-				return;
-			} // end if
-			currentNumOfPersons++;
-
+			// == debug code == //
+			System.out.println("== Persons currently in array ==");
+			bGraph.printPersonArray();
+			// == end of debug == //
 			break;
 		}
-
 		case 2: {// Add Gifts
-			if (currentNumOfGifts > defaultSize) {
-				// if puno na or if 10 na yung gift
-				System.out.println("Already at max gifts(10/10)");
-				return;
-			} // end if
-			currentNumOfGifts++;
+			for (int i = 0; i < defaultLoopCount; i++) {
+				System.out.print("\n:: Enter a Gift. \nUserInput%> ");
+				Gift inputGift = new Gift(checkUserInput("\n:: Enter a Gift. \nUserInput%> "));
+				bGraph.addGift(inputGift);
+			} // end for
 
+			// == debug code == //
+			System.out.println("== Gifts currently in array ==");
+			bGraph.printGiftsArray();
+			// == end of debug == //
 			break;
 		}
-
 		case 3: {// Add Preferred Gifts
+//			Person inputPerson = bGraph.findPerson(checkUserInput("\n:: Enter a person name. \nUserInput%> "));
+//			boolean condition = true;
+//			do {
+//				bGraph.addEdge(, );
+//			} while (condition != true);
+
 			break;
 		}
-
 		case 4: {// Print Matches
 			break;
 		}
-
 		case 5: {// Exit
 			System.out.println("「Exiting now...」");
 			System.exit(0);
 			break;
 		}
-
 		default:
 			// @formatter:off
 			System.out.println("\n" +
