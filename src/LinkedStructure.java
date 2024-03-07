@@ -1,4 +1,5 @@
 public class LinkedStructure {
+	// == FIELD VARIABLE == //
 	public Gift giftHead;
 	public Person personHead;
 	private int giftCount = 0;
@@ -104,13 +105,17 @@ public class LinkedStructure {
 		} // end while
 	}// end method
 
-// ========== DISPLAY METHODS =======/ 
+// ========== OTHER METHODS =======/ 
 	/*
 	 * 
 	 */
 	public void displayPersonWithGift() {
-		System.out.print("::\nPerson with Preferred Gifts: \n");
 		Person tempPerson = personHead;
+		if (!isPersonAvailable(tempPerson)) {
+			System.out.print("Notice: \033[3mNo person is currently on the graph"
+					+ "\n  Please add people to the graph first..\033[0m \n");
+		}
+
 		while (tempPerson != null) {
 			System.out.print(tempPerson.getName() + " --> | ");
 			Gift tempGift = tempPerson.getPrefGift();
@@ -128,8 +133,13 @@ public class LinkedStructure {
 	 * 
 	 */
 	public void displayPerson() {
-		System.out.print(":: Persons: \n| ");
 		Person tempPerson = personHead;
+		if (tempPerson == null) {
+			System.out.println("");
+			return;
+		}
+		System.out.print(":: Persons: \n| ");
+
 		while (tempPerson != null) {
 			System.out.print(tempPerson.getName() + " | ");
 			tempPerson = tempPerson.getNext();
@@ -148,6 +158,16 @@ public class LinkedStructure {
 			tempGIft = tempGIft.getNext();
 		}
 		System.out.println();
+	}// end method
+
+	/*
+	 * 
+	 */
+	public boolean isPersonAvailable(Person person) {
+		if (person == null) {
+			return false;
+		} // end if
+		return true;
 	}// end method
 
 }// end class

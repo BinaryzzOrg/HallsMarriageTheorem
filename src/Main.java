@@ -29,10 +29,11 @@ public class Main {
 	}// end method
 
 	/*
-	 * The MenuChoices method contains the following operations: Add, ViewHashTable,
-	 * and Exit. This method calls the PrintMenuChoices that prints out the choices
-	 * for modifying the HashTable that is chosen by the user. MenuChoices method
-	 * also handles miss inputs of the user and loops if it detects one.
+	 * The MenuChoices method contains the following operations: Add Persons, Add
+	 * Gifts, Add Preferred Gift, Print the Matches, and Exit. This method calls the
+	 * PrintMenuChoices that prints out the choices for modifying the bipartite,
+	 * that is chosen by the user. MenuChoices method also handles miss inputs of
+	 * the user and loops if it detects one.
 	 */
 	private static LinkedStructure linkedStructure = new LinkedStructure();
 	private static int defaultLoopCount = 10;
@@ -166,7 +167,7 @@ public class Main {
 
 		if (!sc.hasNextInt()) {
 			String input = sc.nextLine();
-			return input;
+			return removeWhiteSpace(input);
 		} // end if
 
 		System.out.println(printCustomError("string"));
@@ -189,5 +190,23 @@ public class Main {
 		// @formatter:on
 	}// end method
 
-	// pa delete nalang neto, pang test lang sa git push tong comment
+	/*
+	 * The removeWhiteSpace method, simply removes any extra white spaces on a
+	 * string that is passed on to the parameter. Once the method is done with the
+	 * operations, it returns a more 'clean' string for the other methods to use.
+	 */
+	public static String removeWhiteSpace(String str) {
+
+		String fixed = "";
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == ' ' && str.charAt(i + 1) != ' ') {
+				fixed += str.charAt(i);
+			}
+			if (str.charAt(i) != ' ') {
+				fixed += str.charAt(i);
+			}
+		} // end for
+		return fixed;
+	}// end method
+
 }// end method
