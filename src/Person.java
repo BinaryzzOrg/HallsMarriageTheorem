@@ -1,62 +1,65 @@
 
 public class Person {
 
-	// == FIELD VARIABLES == //
+	// === FIELD VARIABLES === //
+	private Gift prefGift;
+	private boolean isAssigned;
 	private String name;
-	private Gift[] preferredGifts;
-	private int giftCount = 0;
+	private Person next;
 
-	// == CONSTRUCTOR == //
+	// === CONSTRUCTOR === //
 	public Person(String name) {
+		this.prefGift = null;
+		this.isAssigned = false;
 		this.name = name;
-		this.preferredGifts = new Gift[1];
 	}// end constructor
 
-	// == GETTER SETTERS == //
+	// === METHOD == //
+	/*
+	 * 
+	 */
+	public void insertPrefGift(Gift gift) {
+		if (this.prefGift == null) {
+			this.prefGift = gift;
+			return;
+		}
+		Gift tempGift = prefGift;
+		while (tempGift.getNext() != null) {
+			tempGift = tempGift.getNext();
+		}
+		tempGift.setNext(gift);
+	}// end method
+
+	// === GETTER SETTERS === //
+	public Gift getPrefGift() {
+		return prefGift;
+	}
+
+	public void setPrefGift(Gift gift) {
+		this.prefGift = gift;
+	}
+
 	public String getName() {
-		return this.name;
-	}// end method
+		return name;
+	}
 
-	public Gift[] getPreferredGifts() {
-		return this.preferredGifts;
-	}// end method
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	public Gift getGift(int index) {
-		return preferredGifts[index];
-	}// end method
+	public boolean isAssigned() {
+		return isAssigned;
+	}
 
-	// == PERSON METHODS == //
-	/*
-	 * 
-	 */
-	public void addPreferredGift(Gift gift) {
-		// avoid duplicates
-		for (Gift listedGift : preferredGifts) {
-			if (gift.equals(listedGift)) {
-				System.out.println(name + " already prefer this gift: " + gift.getName());
-				return;
-			} // end if
-		} // end for
+	public void setAssigned(boolean isAssigned) {
+		this.isAssigned = isAssigned;
+	}
 
-		if (giftCount != 10) {
-			ensureGiftsSize();
-			this.preferredGifts[giftCount++] = gift;
-		} // end if
-	}// end method
+	public Person getNext() {
+		return next;
+	}
 
-	/*
-	 * 
-	 */
-	private void ensureGiftsSize() {
-		if (giftCount == preferredGifts.length) {
-			Gift[] temp = new Gift[giftCount + 3];
-
-			for (int index = 0; index < giftCount; index++) {
-				temp[index] = preferredGifts[index];
-			} // end for
-
-			preferredGifts = temp;
-		} // end if
-	}// end method
-
+	public void setNext(Person next) {
+		this.next = next;
+	}
 }// end class

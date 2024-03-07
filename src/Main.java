@@ -1,15 +1,9 @@
 import java.util.Scanner;
 
 public class Main {
-	// field variables
-	// private static HashTable hashTable = new HashTable();
-
 	public static void main(String[] args) {
 		Menu();
-	}// end method
-
-	// == GETTER SETTERS == //
-	// getter setter for
+	}// end main
 
 	/*
 	 * The PrintMenuChoices method returns a formatted string for MainMenu. This
@@ -40,7 +34,7 @@ public class Main {
 	 * for modifying the HashTable that is chosen by the user. MenuChoices method
 	 * also handles miss inputs of the user and loops if it detects one.
 	 */
-	private static BGraph bGraph = new BGraph();
+	private static LinkedStructure linkedStructure = new LinkedStructure();
 	private static int defaultLoopCount = 10;
 
 	public static void Menu() {
@@ -48,41 +42,37 @@ public class Main {
 
 		switch (CheckUserInput(PrintMenuChoices())) {
 		case 1: {// Add Persons
+			System.out.print("\n:: Enter names of people.");
 			for (int i = 0; i < defaultLoopCount; i++) {
-				System.out.print("\n:: Enter a person name. \nUserInput%> ");
-				Person inputPerson = new Person(checkUserInput("\n:: Enter the string to search. \nUserInput%> "));
-				bGraph.addPerson(inputPerson);
+				System.out.print("\nUserInput " + i + "> ");
+				linkedStructure.insertPerson(checkUserInput("\n:: Enter names of people. \nUserInput" + i + "> "));
 			} // end for
 
 			// == debug code == //
-			System.out.println("== Persons currently in array ==");
-			bGraph.printPersonArray();
+			System.out.println("\n== PEOPLE CURRENTLY IN THE GRAPH ==");
+			linkedStructure.displayPerson();
 			// == end of debug == //
 			break;
 		}
 		case 2: {// Add Gifts
+			System.out.print("\n:: Enter name of Gifts.");
 			for (int i = 0; i < defaultLoopCount; i++) {
-				System.out.print("\n:: Enter a Gift. \nUserInput%> ");
-				Gift inputGift = new Gift(checkUserInput("\n:: Enter a Gift. \nUserInput%> "));
-				bGraph.addGift(inputGift);
+				System.out.print("\nUserInput" + i + "> ");
+				linkedStructure.insertGift(checkUserInput("\n:: Enter name of Gifts. \nUserInput" + i + "> "));
 			} // end for
 
 			// == debug code == //
-			System.out.println("== Gifts currently in array ==");
-			bGraph.printGiftsArray();
+			System.out.println("\n== GIFTS CURRENTLY IN THE GRAPH ==");
+			linkedStructure.displayGift();
 			// == end of debug == //
 			break;
 		}
 		case 3: {// Add Preferred Gifts
-//			Person inputPerson = bGraph.findPerson(checkUserInput("\n:: Enter a person name. \nUserInput%> "));
-//			boolean condition = true;
-//			do {
-//				bGraph.addEdge(, );
-//			} while (condition != true);
-
+			linkedStructure.insertPreferredGift();
 			break;
 		}
 		case 4: {// Print Matches
+			linkedStructure.displayPersonWithGift();
 			break;
 		}
 		case 5: {// Exit
@@ -93,13 +83,13 @@ public class Main {
 		default:
 			// @formatter:off
 			System.out.println("\n" +
-					"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+					"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
 					"┇ Error: \n" +
 					"┇ Input is not a valid Menu choice. \n" +
-					"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+					"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
 					"┇ Msg: \n" +
 					"┇ \033[3mPlease enter only 1 to _ as input\033[0m \n" +
-					"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃");
+					"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃");
 			// @formatter:on
 			break;
 		}// end method
