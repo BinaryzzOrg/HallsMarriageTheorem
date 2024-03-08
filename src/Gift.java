@@ -8,7 +8,6 @@ public class Gift {
 	// === CONSTRUCTOR === //
 	public Gift(String name) {
 		this.name = name;
-		this.isAssigned = false;
 	}// end constructor
 
 	// === GETTER SETTERS === //
