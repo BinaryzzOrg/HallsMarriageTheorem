@@ -253,5 +253,4 @@ public class Main {
 		}
 		return loopCountToSet;
 	}// end method
-
 }// end method
