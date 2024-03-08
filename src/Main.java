@@ -20,7 +20,7 @@ public class Main {
 								"┃ 【 1 】 Add Persons \n" +
 								"┃ 【 2 】 Add Gifts \n" + 
 								"┃ 【 3 】 Add Preferred Gift \n" + 
-								"┃ 【 4 】 Print Matches \n" + 
+								"┃ 【 4 】 Match \n" + 
 								"┃ 【 5 】 Exit \n" + 
 								"━━━━━━━━━━━━━━━━━━━━━━━━━\n" + 
 								"》 ";
@@ -73,7 +73,7 @@ public class Main {
 			break;
 		}
 		case 4: {// Print Matches
-			linkedStructure.displayPersonWithGift();
+			linkedStructure.match();
 			break;
 		}
 		case 5: {// Exit
@@ -180,7 +180,7 @@ public class Main {
 	 * The printCustomError is exclusively used by checkUserInput, and
 	 * checkUserInputMenu for printing their errors, but this method can by used by
 	 * other methods if needed. This method has a parameter called 'type' for
-	 * specify what data is needed to be inputed on a method that calls this.
+	 * specify what data is needed  be inputed on a method that calls this.
 	 */
 	public static String printCustomError(String type) {
 		// @formatter:off
