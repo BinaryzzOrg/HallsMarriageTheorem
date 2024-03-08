@@ -1,30 +1,39 @@
 
 public class Gift {
-	// == FIELD VARIABLES == //
-	private String giftName;
-	private boolean isTaken;
 
-	// == Constructor == //
-	public Gift(String giftName) {
-		this.giftName = giftName;
-		this.isTaken = false;
+	// === FIELD VARIABLES === //
+	private boolean isAssigned;
+	private String name;
+	private Gift next;
+
+	// === CONSTRUCTOR === //
+	public Gift(String name) {
+		this.name = name;
+		this.isAssigned = false;
 	}// end constructor
 
-	// == GETTER SETTERS == //
+	// === GETTER SETTERS === //
 	public String getName() {
-		return this.giftName;
-	}// end method
+		return name;
+	}
 
-	public boolean takenStatus() {
-		return this.isTaken;
-	}// end method
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	public void takeGift() {
-		this.isTaken = true;
-	}// end method
+	public boolean isAssigned() {
+		return isAssigned;
+	}
 
-	public void returnGift() {
-		this.isTaken = false;
-	}// end method
+	public void setAssigned(boolean isAssigned) {
+		this.isAssigned = isAssigned;
+	}
 
-}// end class
+	public Gift getNext() {
+		return next;
+	}
+
+	public void setNext(Gift next) {
+		this.next = next;
+	}
+}// end method
