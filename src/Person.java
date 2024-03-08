@@ -3,7 +3,6 @@ public class Person {
 
 	// === FIELD VARIABLES === //
 	private Gift prefGift;
-	private boolean isAssigned;
 	private String name;
 	private Person next;
 
@@ -16,7 +15,8 @@ public class Person {
 
 	// === METHOD == //
 	/*
-	 * 
+	 *  inserts the given gift object in the preferred gifts of the person
+  	 *  traversing through the list and inserting it in the end
 	 */
 	public void insertPrefGift(Gift gift) {
 		if (this.prefGift == null) {
@@ -45,14 +45,6 @@ public class Person {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public boolean isAssigned() {
-		return isAssigned;
-	}
-
-	public void setAssigned(boolean isAssigned) {
-		this.isAssigned = isAssigned;
 	}
 
 	public Person getNext() {
