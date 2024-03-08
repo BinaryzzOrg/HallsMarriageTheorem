@@ -167,10 +167,15 @@ public class Main {
 
 		if (sc.hasNextInt()) {
 			int value = sc.nextInt();
+			if (value < 0) {
+				System.out.println(printCustomError("integer/positive integer"));
+				System.out.print(prompt);
+				return checkUserInputMenu(prompt);
+			}
 			return value;
 		} // end if
 
-		System.out.println(printCustomError("integer"));
+		System.out.println(printCustomError("integer/positive integer"));
 
 		System.out.print(prompt);
 		return checkUserInputMenu(prompt);
