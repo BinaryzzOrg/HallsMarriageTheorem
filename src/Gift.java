@@ -2,7 +2,6 @@
 public class Gift {
 
 	// === FIELD VARIABLES === //
-	private boolean isAssigned;
 	private String name;
 	private Gift next;
 
@@ -19,14 +18,6 @@ public class Gift {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public boolean isAssigned() {
-		return isAssigned;
-	}
-
-	public void setAssigned(boolean isAssigned) {
-		this.isAssigned = isAssigned;
 	}
 
 	public Gift getNext() {
