@@ -36,7 +36,7 @@ public class Main {
 	 * the user and loops if it detects one.
 	 */
 	private static LinkedStructure linkedStructure = new LinkedStructure();
-	private static int defaultLoopCount = 5;
+	private static int defaultLoopCount = 10;
 
 	public static void Menu() {
 		System.out.print(PrintMenuChoices());
