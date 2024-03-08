@@ -4,7 +4,7 @@ public class LinkedStructure {
 	public Person personHead;
 	private int giftCount = 0;
 	private int personCount = 0;
-	String[][] match = new String[2][3];
+	String[][] match;
 
 // ========== BIPARTITE ========== //
 	/*
