@@ -42,11 +42,22 @@ public class Main {
 
 		switch (CheckUserInput(PrintMenuChoices())) {
 		case 1: {// Add Persons
+			if (linkedStructure.personCount == 10) {
+			//@formatter:off
+			System.out.print("\n"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" 
+					+ "┇ Notice: \033[3mMaximum capacity of People reached (" + linkedStructure.personCount + "/10)\n\033[0m"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+			//@formatter:on
+				Menu();
+				return;
+			}
 			int defaultLoopCount = setLoopCount("persons");
 			System.out.print("\n:: Enter names of people.");
 			for (int i = 0; i < defaultLoopCount; i++) {
 				System.out.print("\nUserInput " + i + "> ");
 				linkedStructure.insertPerson(checkUserInput("\n:: Enter names of people. \nUserInput" + i + "> "));
+				linkedStructure.personCount++;
 			} // end for
 
 			// == debug code == //
@@ -56,11 +67,22 @@ public class Main {
 			break;
 		}
 		case 2: {// Add Gifts
+			if (linkedStructure.giftCount == 10) {
+			//@formatter:off
+			System.out.print("\n"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" 
+					+ "┇ Notice: \033[3mMaximum capacity of People reached (" + linkedStructure.personCount + "/10)\n\033[0m"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+			//@formatter:on
+				Menu();
+				return;
+			}
 			int defaultLoopCount = setLoopCount("gifts");
 			System.out.print("\n:: Enter name of Gifts.");
 			for (int i = 0; i < defaultLoopCount; i++) {
 				System.out.print("\nUserInput" + i + "> ");
 				linkedStructure.insertGift(checkUserInput("\n:: Enter name of Gifts. \nUserInput" + i + "> "));
+				linkedStructure.giftCount++;
 			} // end for
 
 			// == debug code == //
@@ -231,5 +253,4 @@ public class Main {
 		}
 		return loopCountToSet;
 	}// end method
-
 }// end method
