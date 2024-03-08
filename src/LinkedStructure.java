@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class LinkedStructure {
 	// == FIELD VARIABLE == //
 	public Gift giftHead;
@@ -10,22 +8,30 @@ public class LinkedStructure {
 
 // ========== BIPARTITE ========== //
 	/*
-	 * This is a method for inserting a new node in the linklist of Person object. We have a maximum number of persons
-	 * which is 10, so if the number of persons is already 10 we display an error message that the user cannot insert 
-	 * another person and we exit the method. If the "personHead" or the head in the person list is null, create a new node 
-	 * and make it the head of the list and exit the method. Else, we traverse in the list until we  get the last node, 
-	 * connect the last node and the new node by calling the method setNext(), the new node will become the last node 
-	 * of the list. Hence, creating a list of persons.
+	 * This is a method for inserting a new node in the linklist of Person object.
+	 * We have a maximum number of persons which is 10, so if the number of persons
+	 * is already 10 we display an error message that the user cannot insert another
+	 * person and we exit the method. If the "personHead" or the head in the person
+	 * list is null, create a new node and make it the head of the list and exit the
+	 * method. Else, we traverse in the list until we get the last node, connect the
+	 * last node and the new node by calling the method setNext(), the new node will
+	 * become the last node of the list. Hence, creating a list of persons.
 	 * 
 	 * Displaying all the persons in the Person list.
 	 * 
 	 */
 	public void insertPerson(String name) {
 		if (personCount == 10) {
-			System.out.print("Notice: \033[3mMaximum capacity of People reached (" + personCount + "/10)\033[0m");
+			//@formatter:off
+			System.out.print("\n"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" 
+					+ "┇ Notice: \033[3mMaximum capacity of People reached (" + personCount + "/10)\n\033[0m"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+			//@formatter:on
 			return;
 		}
 
+		personCount++;
 		if (personHead == null) {
 			this.personHead = new Person(name);
 			return;
@@ -38,21 +44,29 @@ public class LinkedStructure {
 	}// end method
 
 	/*
-	 * This is a method for inserting a new node in the linklist of Gift object. We have a maximum number of gifts
-	 * which is 10, so if the number of gifts is already 10 we display an error message that the user cannot insert 
-	 * another gift and we exit the method. If the "giftHead" or the head in the gift list is null, create a new node 
-	 * and make it the head of the list and exit the method. Else, we traverse in the list until we  get the last node, 
-	 * connect the last node and the new node by calling the method setNext(), the new node will become the last node 
-	 * of the list. Hence, creating a list of gifts. 
+	 * This is a method for inserting a new node in the linklist of Gift object. We
+	 * have a maximum number of gifts which is 10, so if the number of gifts is
+	 * already 10 we display an error message that the user cannot insert another
+	 * gift and we exit the method. If the "giftHead" or the head in the gift list
+	 * is null, create a new node and make it the head of the list and exit the
+	 * method. Else, we traverse in the list until we get the last node, connect the
+	 * last node and the new node by calling the method setNext(), the new node will
+	 * become the last node of the list. Hence, creating a list of gifts.
 	 * 
 	 * Displaying all the gifts in the Gift list.
 	 */
 	public void insertGift(String name) {
 		if (giftCount == 10) {
-			System.out.print("Notice: \033[3mMaximum capacity of Gifts reached (" + giftCount + "/10)\033[0m");
+			//@formatter:off
+			System.out.print("\n"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" 
+					+ "┇ Notice: \033[3mMaximum capacity of Gifts reached (" + giftCount + "/10)\n\033[0m"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+			//@formatter:on
 			return;
 		}
 
+		giftCount++;
 		if (giftHead == null) {
 			this.giftHead = new Gift(name);
 			return;
@@ -65,21 +79,28 @@ public class LinkedStructure {
 	}// end method
 
 	/*
-	 * Each Person object have a linklist of their preferred gifts called "prefGift". This method is for inserting 
-	 * the preferred gifts of each person in our referenced linklist.
-	 * If we don't have any person in our list of Person, we display an error message saying that the user need 
-	 * to add a person first before inserting preferred gifts. 
-	 * Else, we traverse the list of person, asking each person how many gifts they preferred. The user needs to 
-	 * enter all the preferred gift names. The gift names are checked if the names are in the list of gifts. If 
-	 * the gift name is not on the list of gift, we display an error message and asking for another name. After 
-	 * checking, if valid, it will store in the person's list of preferred gifts.
+	 * Each Person object have a linklist of their preferred gifts called
+	 * "prefGift". This method is for inserting the preferred gifts of each person
+	 * in our referenced linklist. If we don't have any person in our list of
+	 * Person, we display an error message saying that the user need to add a person
+	 * first before inserting preferred gifts. Else, we traverse the list of person,
+	 * asking each person how many gifts they preferred. The user needs to enter all
+	 * the preferred gift names. The gift names are checked if the names are in the
+	 * list of gifts. If the gift name is not on the list of gift, we display an
+	 * error message and asking for another name. After checking, if valid, it will
+	 * store in the person's list of preferred gifts.
 	 * 
 	 */
 	public void insertPreferredGift() {
 		Person tempPerson = personHead;
 		if (tempPerson == null) {
-			System.out.print("Notice: \033[3mNo person is currently on the graph"
-					+ "\n  Please add persons before adding preferred gifts.\033[0m \n");
+			//@formatter:off
+			System.out.print("\n"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" 
+					+ "┇ Notice: \033[3mNo person is currently on the graph\n"
+					+ "┇  Please add persons before adding preferred gifts.\033[0m \n"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+			//@formatter:on
 			return;
 		} // end if
 
@@ -98,20 +119,21 @@ public class LinkedStructure {
 	}// end method
 
 	/*
-	 * Remove gift method removes the specified gift in the list of preferred gifts during the matching process 
-  	 * mainGift is for storing the person's preferred gift, temp gift is for traversing the list, and previous gift
-    	 * is for keeping the reference of the headthat is used in the while loop
-      	 * the first two if condition is for no more gift left and the gift to delete is at the head
-	 * while loop is for deleting at the node after the beginning to the end
-  	 * is tempGift is not null move the pointer of the previous gift to the next of the tempGift to loose the reference
-    	 * then update the preferred gift of the person
+	 * Remove gift method removes the specified gift in the list of preferred gifts
+	 * during the matching process mainGift is for storing the person's preferred
+	 * gift, temp gift is for traversing the list, and previous gift is for keeping
+	 * the reference of the headthat is used in the while loop the first two if
+	 * condition is for no more gift left and the gift to delete is at the head
+	 * while loop is for deleting at the node after the beginning to the end is
+	 * tempGift is not null move the pointer of the previous gift to the next of the
+	 * tempGift to loose the reference then update the preferred gift of the person
 	 */
 	public void removeGift(Person person, String name) {
 		Gift mainGift = person.getPrefGift();
 		Gift tempGift = mainGift;
 		Gift previousGift = null;
 
-		if (tempGift == null) { 
+		if (tempGift == null) {
 			return;
 		}
 
@@ -124,7 +146,7 @@ public class LinkedStructure {
 			previousGift = tempGift;
 			tempGift = tempGift.getNext();
 		}
-		
+
 		if (tempGift != null) {
 			previousGift.setNext(tempGift.getNext());
 			person.setPrefGift(mainGift);
@@ -132,15 +154,17 @@ public class LinkedStructure {
 	}
 
 	/*
- 	 * match method is for matching the person with the gifts optimally
-   	 * the 2D array named match is for storing the matches person with the gift and printing it later
-     	 * the nested while loop gets the perferred gift of the person first then keep the reference of the current
-         * person before traversing to other persons, afterwards store the name and gift it has been matches with in the array
-	 * then perform removal of the matched gift in the preferred gift of all the other persons because it has been taken
-  	 * continue it until it reaches the last person in the outer while loop.
-    	 * if the 2d array has a null value inside it should print no feasible solution since not all persons have a gift
-      	 * else print it all.
-  	 */
+	 * match method is for matching the person with the gifts optimally the 2D array
+	 * named match is for storing the matches person with the gift and printing it
+	 * later the nested while loop gets the perferred gift of the person first then
+	 * keep the reference of the current person before traversing to other persons,
+	 * afterwards store the name and gift it has been matches with in the array then
+	 * perform removal of the matched gift in the preferred gift of all the other
+	 * persons because it has been taken continue it until it reaches the last
+	 * person in the outer while loop. if the 2d array has a null value inside it
+	 * should print no feasible solution since not all persons have a gift else
+	 * print it all.
+	 */
 	public void match() {
 		Person tempPerson = personHead;
 		Person currentPerson;
@@ -176,11 +200,12 @@ public class LinkedStructure {
 		}
 		System.out.println(optimallyMatched);
 	}
-	
+
 	/*
-	 * Method for getting the number of person in the list of Person. creating variable count
-	 * that will increment when traversing through the list. It will continue to increment until
-	 * it gets to the last node of the list. The new value of count will return after;
+	 * Method for getting the number of person in the list of Person. creating
+	 * variable count that will increment when traversing through the list. It will
+	 * continue to increment until it gets to the last node of the list. The new
+	 * value of count will return after;
 	 */
 	public int getPersonListSize() {
 		Person tempPerson = personHead;
@@ -194,11 +219,13 @@ public class LinkedStructure {
 
 	// ========== OTHER METHODS =======/
 	/*
-	 * Method for displaying the Person along with their preferred gift. We first traverse the person list, 
-	 * getting the name of the current Person node and print its name using the method getName(). After that, 
-	 * we need to traverse the current Persons's preferred gifts by getting its reference head node "prefGift".
-	 * Traverse all the preferred gifts and print each gift names. Then we move on to the next person on the list
-	 * and do the same way as the current Person until we get all the person and their preferred gifts names to print.
+	 * Method for displaying the Person along with their preferred gift. We first
+	 * traverse the person list, getting the name of the current Person node and
+	 * print its name using the method getName(). After that, we need to traverse
+	 * the current Persons's preferred gifts by getting its reference head node
+	 * "prefGift". Traverse all the preferred gifts and print each gift names. Then
+	 * we move on to the next person on the list and do the same way as the current
+	 * Person until we get all the person and their preferred gifts names to print.
 	 */
 	public void displayPersonWithPrefGift() {
 		Person tempPerson = personHead;
@@ -216,9 +243,9 @@ public class LinkedStructure {
 	}// end method
 
 	/*
-	 * Method for displaying the person list. Each time we traverse the person, we print its name. 
-	 * It will traverse all the way until to the last node. The while loop will stop if we meet a null
-	 * node.
+	 * Method for displaying the person list. Each time we traverse the person, we
+	 * print its name. It will traverse all the way until to the last node. The
+	 * while loop will stop if we meet a null node.
 	 */
 	public void displayPerson() {
 		System.out.print(":: Persons: \n| ");
@@ -231,9 +258,9 @@ public class LinkedStructure {
 	}// end method
 
 	/*
-	 * Method for displaying the gift list. Each time we traverse the gift, we print its name. 
-	 * It will traverse all the way until to the last node. The while loop will stop if we meet a null
-	 * node.
+	 * Method for displaying the gift list. Each time we traverse the gift, we print
+	 * its name. It will traverse all the way until to the last node. The while loop
+	 * will stop if we meet a null node.
 	 */
 	public void displayGift() {
 		System.out.print(":: Gift: \n| ");

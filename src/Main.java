@@ -36,13 +36,13 @@ public class Main {
 	 * the user and loops if it detects one.
 	 */
 	private static LinkedStructure linkedStructure = new LinkedStructure();
-	private static int defaultLoopCount = 10;
 
 	public static void Menu() {
 		System.out.print(PrintMenuChoices());
 
 		switch (CheckUserInput(PrintMenuChoices())) {
 		case 1: {// Add Persons
+			int defaultLoopCount = setLoopCount("persons");
 			System.out.print("\n:: Enter names of people.");
 			for (int i = 0; i < defaultLoopCount; i++) {
 				System.out.print("\nUserInput " + i + "> ");
@@ -56,6 +56,7 @@ public class Main {
 			break;
 		}
 		case 2: {// Add Gifts
+			int defaultLoopCount = setLoopCount("gifts");
 			System.out.print("\n:: Enter name of Gifts.");
 			for (int i = 0; i < defaultLoopCount; i++) {
 				System.out.print("\nUserInput" + i + "> ");
@@ -89,7 +90,7 @@ public class Main {
 					"┇ Input is not a valid Menu choice. \n" +
 					"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
 					"┇ Msg: \n" +
-					"┇ \033[3mPlease enter only 1 to _ as input\033[0m \n" +
+					"┇ \033[3mPlease enter only 1 to 5 as input\033[0m \n" +
 					"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃");
 			// @formatter:on
 			break;
@@ -180,13 +181,16 @@ public class Main {
 	 * The printCustomError is exclusively used by checkUserInput, and
 	 * checkUserInputMenu for printing their errors, but this method can by used by
 	 * other methods if needed. This method has a parameter called 'type' for
-	 * specify what data is needed  be inputed on a method that calls this.
+	 * specify what data is needed be inputed on a method that calls this.
 	 */
 	public static String printCustomError(String type) {
 		// @formatter:off
-		return "\n" +
-			"Warning: Input is not a "+ type +" value. \n\n" +
-			"Notice: \033[3mPlease only enter a "+ type +" value.\033[0m \n";
+			return "\n" +
+						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+						"┇ Warning: Input is not a "+ type +" value. \n" +
+						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" +
+						"┇ Notice: \033[3mPlease only enter a "+ type +" value.\033[0m\n" +
+						"⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n";
 		// @formatter:on
 	}// end method
 
@@ -207,6 +211,25 @@ public class Main {
 			}
 		} // end for
 		return fixed;
+	}// end method
+
+	/*
+	 * The setLoopCount method is used in the menu, it asks the user how many person
+	 * or gift they would enter.
+	 */
+	public static int setLoopCount(String prompt) {
+		System.out.print("\nHow many " + prompt + " would you enter?\nUserInput%> ");
+		int loopCountToSet = checkUserInputMenu("\nHow many " + prompt + " would you enter?\nUserInput%> ");
+		if (loopCountToSet > 10) {
+			//@formatter:off
+			System.out.print("\n"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" 
+					+ "┇ Notice: \033[3mMax " + prompt + " that could be stored is 10\033[0m\n"
+					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
+			//@formatter:on
+			return setLoopCount(prompt);
+		}
+		return loopCountToSet;
 	}// end method
 
 }// end method
