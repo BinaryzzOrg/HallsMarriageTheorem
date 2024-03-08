@@ -34,6 +34,7 @@ public class LinkedStructure {
 	public void insertGift(String name) {
 		if (giftCount > 10) {
 			System.out.print("Notice: \033[3mMaximum capacity of Gifts reached (" + giftCount + "/10)\033[0m");
+			return;
 		}
 
 		if (giftHead == null) {
@@ -73,14 +74,20 @@ public class LinkedStructure {
 	}// end method
 
 	/*
-	 * 
+	 * Remove gift method removes the specified gift in the list of preferred gifts during the matching process 
+  	 * mainGift is for storing the person's preferred gift, temp gift is for traversing the list, and previous gift
+    	 * is for keeping the reference of the headthat is used in the while loop
+      	 * the first two if condition is for no more gift left and the gift to delete is at the head
+	 * while loop is for deleting at the node after the beginning to the end
+  	 * is tempGift is not null move the pointer of the previous gift to the next of the tempGift to loose the reference
+    	 * then update the preferred gift of the person
 	 */
 	public void removeGift(Person person, String name) {
 		Gift mainGift = person.getPrefGift();
 		Gift tempGift = mainGift;
 		Gift previousGift = null;
 
-		if (tempGift == null) { //
+		if (tempGift == null) { 
 			return;
 		}
 
@@ -89,19 +96,27 @@ public class LinkedStructure {
 			return;
 		}
 
-		//
 		while (tempGift != null && !tempGift.getName().equalsIgnoreCase(name)) {
 			previousGift = tempGift;
 			tempGift = tempGift.getNext();
 		}
-		//
+		
 		if (tempGift != null) {
 			previousGift.setNext(tempGift.getNext());
 			person.setPrefGift(mainGift);
 		}
 	}
 
-	//
+	/*
+ 	 * match method is for matching the person with the gifts optimally
+   	 * the 2D array named match is for storing the matches person with the gift and printing it later
+     	 * the nested while loop gets the perferred gift of the person first then keep the reference of the current
+         * person before traversing to other persons, afterwards store the name and gift it has been matches with in the array
+	 * then perform removal of the matched gift in the preferred gift of all the other persons because it has been taken
+  	 * continue it until it reaches the last person in the outer while loop.
+    	 * if the 2d array has a null value inside it should print no feasible solution since not all persons have a gift
+      	 * else print it all.
+  	 */
 	public void match() {
 		Person tempPerson = personHead;
 		Person currentPerson;
@@ -113,7 +128,6 @@ public class LinkedStructure {
 		while (tempPerson != null) {
 
 			Gift personGift = tempPerson.getPrefGift();
-
 			currentPerson = tempPerson;
 			if (personGift != null) {
 				match[0][personIndex] = tempPerson.getName();
