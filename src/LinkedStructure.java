@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class LinkedStructure {
 	// == FIELD VARIABLE == //
 	public Gift giftHead;
@@ -76,36 +78,82 @@ public class LinkedStructure {
 	public void removeGift(Person person, String name) {
 		Gift mainGift = person.getPrefGift();
 		Gift tempGift = mainGift;
+		Gift previousGift = null;
+
+		if (tempGift == null) { //
+			return;
+		}
 
 		if (tempGift.getName().equalsIgnoreCase(name)) {
-			System.out.println("test1");
-			person.setPrefGift(mainGift);
+			person.setPrefGift(tempGift.getNext());
 			return;
-		} // end if
+		}
 
-		while (tempGift != null) {
-			if (tempGift.getName().equalsIgnoreCase(name)) {
-				System.out.println("test2");
-				tempGift.setNext(tempGift.getNext());
-			} // end if
+		//
+		while (tempGift != null && !tempGift.getName().equalsIgnoreCase(name)) {
+			previousGift = tempGift;
 			tempGift = tempGift.getNext();
-		} // end while
-		mainGift = tempGift;
-		person.setPrefGift(mainGift);
-	}// end method
+		}
+		//
+		if (tempGift != null) {
+			previousGift.setNext(tempGift.getNext());
+			person.setPrefGift(mainGift);
+		}
+	}
 
-	/*
-	 * 
-	 */
+	//
 	public void match() {
 		Person tempPerson = personHead;
-		while (tempPerson != null) {
-			removeGift(tempPerson, "Ball");
-			tempPerson = tempPerson.getNext();
-		} // end while
-	}// end method
+		Person currentPerson;
+		String[][] match = new String[2][getPersonListSize()];
 
-// ========== OTHER METHODS =======/ 
+		System.out.println("Performing Optimal Matching...");
+
+		int personIndex = 0;
+		while (tempPerson != null) {
+
+			Gift personGift = tempPerson.getPrefGift();
+
+			currentPerson = tempPerson;
+			if (personGift != null) {
+				match[0][personIndex] = tempPerson.getName();
+				match[1][personIndex] = personGift.getName();
+
+				while (tempPerson != null) {
+					removeGift(tempPerson, personGift.getName());
+					tempPerson = tempPerson.getNext();
+				}
+			}
+			tempPerson = currentPerson.getNext();
+			personIndex++;
+		}
+
+		String optimallyMatched = "";
+		for (int i = 0; i < match[0].length; i++) {
+			if (match[0][i] == null && match[1][i] == null) {
+				System.out.println("No feasible Solution.");
+				return;
+			}
+			optimallyMatched += match[0][i] + " -> " + match[1][i] + "\n";
+		}
+		System.out.println(optimallyMatched);
+	}
+/*
+ * 
+ * 
+ */
+	public int getPersonListSize() {
+
+		Person tempPerson = personHead;
+		int count = 0;
+		while (tempPerson != null) {
+			count++;
+			tempPerson = tempPerson.getNext();
+		}
+		return count;
+	}
+
+	// ========== OTHER METHODS =======/
 	/*
 	 * 
 	 */
