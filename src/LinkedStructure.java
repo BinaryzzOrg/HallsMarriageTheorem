@@ -2,9 +2,8 @@ public class LinkedStructure {
 	// == FIELD VARIABLE == //
 	public Gift giftHead;
 	public Person personHead;
-	private int giftCount = 0;
-	private int personCount = 0;
-	String[][] match;
+	public int giftCount = 0;
+	public int personCount = 0;
 
 // ========== BIPARTITE ========== //
 	/*
@@ -21,17 +20,6 @@ public class LinkedStructure {
 	 * 
 	 */
 	public void insertPerson(String name) {
-		if (personCount == 10) {
-			//@formatter:off
-			System.out.print("\n"
-					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" 
-					+ "┇ Notice: \033[3mMaximum capacity of People reached (" + personCount + "/10)\n\033[0m"
-					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
-			//@formatter:on
-			return;
-		}
-
-		personCount++;
 		if (personHead == null) {
 			this.personHead = new Person(name);
 			return;
@@ -56,17 +44,6 @@ public class LinkedStructure {
 	 * Displaying all the gifts in the Gift list.
 	 */
 	public void insertGift(String name) {
-		if (giftCount == 10) {
-			//@formatter:off
-			System.out.print("\n"
-					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n" 
-					+ "┇ Notice: \033[3mMaximum capacity of Gifts reached (" + giftCount + "/10)\n\033[0m"
-					+ "⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃⁃\n");
-			//@formatter:on
-			return;
-		}
-
-		giftCount++;
 		if (giftHead == null) {
 			this.giftHead = new Gift(name);
 			return;
