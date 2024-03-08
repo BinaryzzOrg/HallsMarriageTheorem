@@ -9,7 +9,6 @@ public class Person {
 	// === CONSTRUCTOR === //
 	public Person(String name) {
 		this.prefGift = null;
-		this.isAssigned = false;
 		this.name = name;
 	}// end constructor
 
