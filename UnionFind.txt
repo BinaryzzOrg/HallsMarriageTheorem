@@ -1,0 +1,83 @@
+package union.find;
+
+public class UnionFind {
+
+	private Node[] universal;
+	private Node[] subsets;
+	private Node root;
+
+	public UnionFind(int size, Node[] universal) {
+		this.setUniversal(universal);
+		this.subsets = new Node[size];
+		this.root = null;
+	}
+
+	public void union(int A, int B) {
+
+		Node firstNode = findNode(new Node(A));
+		Node secondNode = findNode(new Node(B));
+
+		if (root == null) {
+			root = subsets[0];
+		}
+
+		if (firstNode != null && secondNode != null) {
+			Node temp = root;
+
+			if (rootContains(firstNode) && secondNode.getPrev() != null) {
+				while (temp.getNext() != null) {
+					temp = temp.getNext();
+				}
+				temp.setNext(secondNode.getPrev());
+			} else if (rootContains(secondNode) && firstNode.getNext() != null) {
+				while (temp.getNext() != null) {
+					temp = temp.getNext();
+				}
+				temp.setNext(firstNode.getNext());
+			} else {
+				firstNode.setNext(secondNode);
+				secondNode.setPrev(firstNode);
+			}
+
+			for (int index = 0; index < subsets.length; index++) {
+				if (subsets[index] == null) {
+					subsets[index] = firstNode;
+					return;
+				}
+			}
+		}
+	}
+
+	public boolean find(int A, int B) {
+		return rootContains(new Node(A)) && rootContains(new Node(B));
+	}
+
+	private Node findNode(Node node) {
+		for (int index = 0; index < getUniversal().length; index++) {
+			if (node.getData() == getUniversal()[index].getData()) {
+				return getUniversal()[index];
+			}
+		}
+		return null;
+	}
+
+	private boolean rootContains(Node node) {
+		Node temp = root;
+		while (temp != null) {
+			if (temp.getData() == node.getData()) {
+				return true;
+			}
+			temp = temp.getNext();
+		}
+		return false;
+	}
+
+	public Node[] getUniversal() {
+		return universal;
+	}
+
+	public void setUniversal(Node[] universal) {
+		this.universal = universal;
+	}
+
+}
